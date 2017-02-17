@@ -1,0 +1,8 @@
+<project name="rectangle">
+  <junit printsummary="yes" fork="true">
+    <classpath>
+      <pathelement location="."/>
+    </classpath>
+    <test name="RectangleTest" todir="."/>
+  </junit>
+</project>
