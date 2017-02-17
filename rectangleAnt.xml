@@ -2,6 +2,7 @@
   <junit printsummary="yes" fork="true">
     <classpath>
       <pathelement location="."/>
+      <pathelement location="./junit.jar"/>
     </classpath>
     <test name="RectangleTest" todir="."/>
   </junit>
