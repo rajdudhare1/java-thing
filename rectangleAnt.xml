@@ -2,7 +2,7 @@
   <junit printsummary="yes" fork="true">
     <classpath>
       <pathelement location="."/>
-      <pathelement location="./junit.jar"/>
+      <pathelement location="./junit-4.10.jar"/>
     </classpath>
     <test name="RectangleTest" todir="."/>
   </junit>
