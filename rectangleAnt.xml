@@ -4,6 +4,8 @@
       <pathelement location="."/>
       <pathelement location="./junit-4.10.jar"/>
     </classpath>
-    <test name="RectangleTest" todir="."/>
+    <test name="RectangleTest" todir="." outfile="result">
+      <formatter type="xml" />
+    </test>
   </junit>
 </project>
