@@ -25,6 +25,7 @@
 	<!-- Creates the  build, docs and dist directory-->
 	<target name="makedir">
 		<mkdir dir="./bin" />
+		<mkdir dir="./bin/tests">
 		<mkdir dir="./result" />
 	</target>
 
