@@ -31,12 +31,15 @@
 		<javac srcdir="./tests" destdir="./bin">
 			<classpath refid="junit.class.path" />
 		</javac>
+
+	<target name="testing" depends="compile source">
+		<junit printsummary="yes" fork="true">
+			<classpath refid="junit.class.path" />
+			<test name="RectangleTest" todir="./reports" outfile="result">
+				<formatter type="xml" />
+			</test>
+		</junit>
 	</target>
 
-	<junit printsummary="yes" fork="true">
-		<classpath refid="junit.class.path" />
-		<test name="RectangleTest" todir="./reports" outfile="result">
-			<formatter type="xml" />
-		</test>
-	</junit>
+
 </project>
