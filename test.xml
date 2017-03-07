@@ -8,7 +8,7 @@
 	<path id="junit.class.path">
 		<pathelement location="./lib/junit-4.10.jar" />
 		<pathelement location="./bin" />
-		<pathelement location="./bin/tests" />
+		<pathelement location="./tests" />
 	</path>
 
 	<path id="source.path">
@@ -25,12 +25,11 @@
 	<!-- Creates the  build, docs and dist directory-->
 	<target name="makedir">
 		<mkdir dir="./bin" />
-		<mkdir dir="./bin/tests" />
 		<mkdir dir="./result" />
 	</target>
 
 	<target name="compile" depends="clean, makedir">
-		<javac srcdir="./tests" destdir="./bin/tests">
+		<javac srcdir="./tests" destdir="./tests">
 			<classpath refid="junit.class.path" />
 		</javac>
 	</target>
