@@ -8,6 +8,7 @@
 	<path id="junit.class.path">
 		<pathelement location="./lib/junit-4.10.jar" />
 		<pathelement location="./bin" />
+		<pathelement location="./bin/tests" />
 	</path>
 
 	<path id="source.path">
@@ -28,7 +29,7 @@
 	</target>
 
 	<target name="compile" depends="clean, makedir">
-		<javac srcdir="./tests" destdir="./bin">
+		<javac srcdir="./tests" destdir="./bin/tests">
 			<classpath refid="junit.class.path" />
 		</javac>
 	</target>
