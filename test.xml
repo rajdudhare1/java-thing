@@ -26,6 +26,9 @@
 		<javac srcdir="./src" destdir="./bin">
 			<classpath refid="junit.class.path" />
 		</javac>
+		<javac srcdir="./tests" destdir="./bin">
+			<classpath refid="junit.class.path" />
+		</javac>
 	</target>
 
 	<junit printsummary="yes" fork="true">
