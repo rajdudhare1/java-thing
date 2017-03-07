@@ -10,6 +10,11 @@
 		<pathelement location="./bin" />
 	</path>
 
+	<path id="source.path">
+		<pathelement location="./src" />
+		<pathelement location="./tests" />
+	</path>
+
 	<!-- Deletes the existing build, docs and dist directory-->
 	<target name="clean">
 		<delete dir="./bin" />
@@ -23,10 +28,7 @@
 	</target>
 
 	<target name="compile" depends="clean, makedir">
-		<javac srcdir="./src" destdir="./bin">
-			<classpath refid="junit.class.path" />
-		</javac>
-		<javac srcdir="./tests" destdir="./bin">
+		<javac srcdir="source.path" destdir="./bin">
 			<classpath refid="junit.class.path" />
 		</javac>
 	</target>
