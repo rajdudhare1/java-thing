@@ -27,7 +27,7 @@
 		<mkdir dir="./result" />
 	</target>
 
-	<target name="compile" depends="clean, makedir">
+	<target name="compile source" depends="clean, makedir">
 		<javac srcpathref="source.path" destdir="./bin">
 			<classpath refid="junit.class.path" />
 		</javac>
