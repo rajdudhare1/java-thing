@@ -28,7 +28,7 @@
 	</target>
 
 	<target name="compile" depends="clean, makedir">
-		<javac srcdir="source.path" destdir="./bin">
+		<javac srcpathref="source.path" destdir="./bin">
 			<classpath refid="junit.class.path" />
 		</javac>
 	</target>
