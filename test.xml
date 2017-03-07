@@ -29,9 +29,9 @@
 	</target>
 
 	<target name="compile" depends="clean, makedir">
-		<javac srcdir="./tests" destdir="./tests">
-			<classpath refid="junit.class.path" />
-		</javac>
+		<javac srcdir="./tests" destdir="./tests"/>
+			<!-- <classpath refid="junit.class.path" /> -->
+		<!-- </javac> -->
 	</target>
 
 	<!-- <target name="testing" depends="compile"> -->
