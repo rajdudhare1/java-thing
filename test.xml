@@ -31,6 +31,7 @@
 		<javac srcdir="./tests" destdir="./bin">
 			<classpath refid="junit.class.path" />
 		</javac>
+	</target>
 
 	<target name="testing" depends="compile source">
 		<junit printsummary="yes" fork="true">
