@@ -1,5 +1,10 @@
 pipeline {
   agent none
+
+  environment {
+    GIT_COMMIT = "${env.GIT_COMMIT}"
+  }
+
   stages {
     stage('Unit Testing') {
       agent {
