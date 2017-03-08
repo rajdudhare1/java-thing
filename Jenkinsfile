@@ -31,7 +31,6 @@ pipeline {
         label 'CentOS'
       }
       steps {
-        sh 'yum install wget'
         sh 'wget http://brandon4232.mylabserver.com/rectangles/all/rectangle.jar'
         sh 'java -jar rectangle.jar 2 3'
       }
