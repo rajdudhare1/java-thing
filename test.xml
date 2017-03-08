@@ -28,12 +28,10 @@
 		</javac>
 	</target>
 
-	<target name="testing" depends="compile">
-		<junit printsummary="yes" fork="true">
-			<classpath refid="junit.class.path" />
-			<test name="RectangleTest" todir="./reports" outfile="result">
-				<formatter type="xml" />
-			</test>
-		</junit>
-	</target>
+	<junit printsummary="yes" fork="true">
+		<classpath refid="junit.class.path" />
+		<test name="RectangleTest" todir="./reports" outfile="result">
+			<formatter type="xml" />
+		</test>
+	</junit>
 </project>
