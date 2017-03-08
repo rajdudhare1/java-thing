@@ -23,7 +23,7 @@ pipeline {
         label 'Slave 1'
       }
       steps {
-        sh "cp dist/rectangle_${env.BUILD_NUMBER}_${env.GIT_COMMIT}.jar /var/www/html/rectangles/all/""
+        sh "cp dist/rectangle_${env.BUILD_NUMBER}_${env.GIT_COMMIT}.jar /var/www/html/rectangles/all/"
       }
     }
     stage('Test on CentOS'){
