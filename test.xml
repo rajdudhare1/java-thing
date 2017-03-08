@@ -8,12 +8,6 @@
 	<path id="junit.class.path">
 		<pathelement location="./lib/junit-4.10.jar" />
 		<pathelement location="./bin" />
-		<pathelement location="./tests" />
-	</path>
-
-	<path id="source.path">
-		<pathelement location="./src" />
-		<pathelement location="./tests" />
 	</path>
 
 	<!-- Deletes the existing build, docs and dist directory-->
@@ -29,19 +23,17 @@
 	</target>
 
 	<target name="compile" depends="clean, makedir">
-		<javac srcdir="./tests" destdir="./tests"/>
-			<!-- <classpath refid="junit.class.path" /> -->
-		<!-- </javac> -->
+		<javac srcdir="./src" destdir="./bin"/>
+			<classpath refid="junit.class.path" />
+		</javac>
 	</target>
 
-	<!-- <target name="testing" depends="compile"> -->
+	<target name="testing" depends="compile">
 		<junit printsummary="yes" fork="true">
 			<classpath refid="junit.class.path" />
 			<test name="RectangleTest" todir="./reports" outfile="result">
 				<formatter type="xml" />
 			</test>
 		</junit>
-	<!-- </target> -->
-
-
+	</target>
 </project>
