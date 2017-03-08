@@ -11,6 +11,7 @@ pipeline {
         label 'Slave 1'
       }
       steps {
+        sh 'printenv'
         sh 'ant -f test.xml -v'
         junit 'reports/result.xml'
       }
