@@ -40,7 +40,6 @@ pipeline {
         docker 'openjdk:8u121-jre'
       }
       steps {
-        sh 'apt-get install wget'
         sh 'wget http://brandon4232.mylabserver.com/rectangles/all/rectangle.jar'
         sh 'java -jar rectangle.jar 2 3'
       }
