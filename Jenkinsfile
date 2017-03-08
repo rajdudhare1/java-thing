@@ -23,7 +23,7 @@ pipeline {
         label 'Slave 1'
       }
       steps {
-        sh 'cp dist/rectangle.jar /var/www/html/rectangles/all/'
+        sh 'cp dist/rectangle_$BUILD_NUMBER_$GIT_COMMIT.jar/var/www/html/rectangles/all/'
       }
     }
     stage('Test on CentOS'){
@@ -31,8 +31,8 @@ pipeline {
         label 'CentOS'
       }
       steps {
-        sh 'wget http://brandon4232.mylabserver.com/rectangles/all/rectangle.jar'
-        sh 'java -jar rectangle.jar 2 3'
+        sh 'wget http://brandon4232.mylabserver.com/rectangles/all/rectangle_$BUILD_NUMBER_$GIT_COMMIT.jar'
+        sh 'java -jar rectangle_$BUILD_NUMBER_$GIT_COMMIT.jar 2 3'
       }
     }
     stage('Test on Debian') {
@@ -40,8 +40,8 @@ pipeline {
         docker 'openjdk:8u121-jre'
       }
       steps {
-        sh 'wget http://brandon4232.mylabserver.com/rectangles/all/rectangle.jar'
-        sh 'java -jar rectangle.jar 2 3'
+        sh 'wget http://brandon4232.mylabserver.com/rectangles/all/rectangle_$BUILD_NUMBER_$GIT_COMMIT.jar'
+        sh 'java -jar rectangle_$BUILD_NUMBER_$GIT_COMMIT.jar 2 3'
       }
     }
     stage('Promote to Stable'){
@@ -49,7 +49,7 @@ pipeline {
         label 'Slave 1'
       }
       steps {
-        sh 'cp /var/www/html/rectangles/all/rectangle.jar /var/www/html/rectangles/stable/'
+        sh 'cp /var/www/html/rectangles/all/rectangle_$BUILD_NUMBER_$GIT_COMMIT.jar /var/www/html/rectangles/stable/'
       }
     }
   }

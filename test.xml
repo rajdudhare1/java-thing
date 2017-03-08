@@ -1,37 +1,36 @@
 <project name="rectangle">
-	<!-- <property name="src.dir" location="src" />
-	<property name="build.dir" location="bin" />
-	<property name="test.dir" location="src" />
-	<property name="test.report.dir" location="result" /> -->
+  <property name="src.dir" location="src" />
+  <property name="build.dir" location="bin" />
+  <property name="report.dir" location="reports" />
 
-	<!-- Define the classpath which includes the junit.jar and the classes after compiling-->
-	<path id="junit.class.path">
-		<pathelement location="./lib/junit-4.10.jar" />
-		<pathelement location="./bin" />
-	</path>
+  <!-- Define the classpath which includes the junit.jar and the classes after compiling-->
+  <path id="junit.class.path">
+    <pathelement location="./lib/junit-4.10.jar" />
+    <pathelement location="${build.dir}" />
+  </path>
 
-	<!-- Deletes the existing build, docs and dist directory-->
-	<target name="clean">
-		<delete dir="./bin" />
-		<delete dir="./result" />
-	</target>
+  <!-- Deletes the existing build, docs and dist directory-->
+  <target name="clean">
+    <delete dir="${build.dir}"  />
+    <delete dir="${report.dir}" />
+  </target>
 
-	<!-- Creates the  build, docs and dist directory-->
-	<target name="makedir">
-		<mkdir dir="./bin" />
-		<mkdir dir="./result" />
-	</target>
+  <!-- Creates the  build, docs and dist directory-->
+  <target name="makedir">
+    <mkdir dir="${build.dir}" />
+    <mkdir dir="${test.report.dir}" />
+  </target>
 
-	<target name="compile" depends="clean, makedir">
-		<javac srcdir="./src" destdir="./bin">
-			<classpath refid="junit.class.path" />
-		</javac>
-	</target>
+  <target name="compile" depends="clean, makedir">
+    <javac srcdir="src.dir" destdir="${build.dir}">
+      <classpath refid="junit.class.path" />
+    </javac>
+  </target>
 
-	<junit printsummary="yes" fork="true">
-		<classpath refid="junit.class.path" />
-		<test name="RectangleTest" todir="./reports" outfile="result">
-			<formatter type="xml" />
-		</test>
-	</junit>
+  <junit printsummary="yes" fork="true">
+    <classpath refid="junit.class.path" />
+    <test name="RectangleTest" todir="${report.dir}" outfile="result">
+      <formatter type="xml" />
+    </test>
+  </junit>
 </project>
