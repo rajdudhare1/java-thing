@@ -8,7 +8,7 @@ pipeline {
       }
       steps {
         sh 'git rev-parse HEAD > GIT_COMMIT'
-        shortCommit = readFile('GIT_COMMIT').take(6)
+        def shortCommit = readFile('GIT_COMMIT').take(6)
         sh 'printenv'
         sh 'ant -f test.xml -v'
         junit 'reports/result.xml'
