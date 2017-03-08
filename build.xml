@@ -7,6 +7,11 @@
 	<property name="dist.dir" location="dist" />
 	<property name="docs.dir" location="docs" />
 
+	<path id="junit.class.path">
+		<pathelement location="./lib/junit-4.10.jar" />
+		<pathelement location="./bin" />
+	</path>
+
 	<!-- Deletes the existing build, docs and dist directory-->
 	<target name="clean">
 		<delete dir="${build.dir}" />
@@ -23,7 +28,8 @@
 
 	<!-- Compiles the java code (including the usage of library for JUnit -->
 	<target name="compile" depends="clean, makedir">
-		<javac srcdir="${src.dir}:./lib/junit-4.10.jar" destdir="${build.dir}">
+		<javac srcdir="${src.dir}" destdir="${build.dir}">
+			<classpath refid="junit.class.path" />
 		</javac>
 	</target>
 
