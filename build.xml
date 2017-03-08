@@ -37,6 +37,7 @@
 	<target name="docs" depends="compile">
 		<javadoc packagenames="src" sourcepath="${src.dir}" destdir="${docs.dir}">
 			<!-- Define which files / directory should get included, we include all -->
+			<classpath refid="junit.class.path" />
 			<fileset dir="${src.dir}">
 				<include name="**" />
 		 </fileset>
