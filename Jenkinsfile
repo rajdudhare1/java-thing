@@ -38,7 +38,7 @@ pipeline {
     }
     stage('Test on Debian') {
       agent {
-        docker { 'openjdk:8u121-jre' }
+        docker 'openjdk:8u121-jre'
       }
       steps {
         sh 'apt-get install wget'
