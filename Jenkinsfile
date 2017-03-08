@@ -23,7 +23,7 @@ pipeline {
         label 'Slave 1'
       }
       steps {
-        sh 'cp dist/rectangle.jar /var/www/html/rectangle/all/'
+        sh 'cp dist/rectangle.jar /var/www/html/rectangles/all/'
       }
     }
     stage('Test on CentOS'){
@@ -32,7 +32,7 @@ pipeline {
       }
       steps {
         sh 'yum install wget'
-        sh 'wget http://brandon4232.mylabserver.com/rectangle/all/rectangle.jar'
+        sh 'wget http://brandon4232.mylabserver.com/rectangles/all/rectangle.jar'
         sh 'java -jar rectangle.jar 2 3'
       }
     }
@@ -42,7 +42,7 @@ pipeline {
       }
       steps {
         sh 'apt-get install wget'
-        sh 'wget http://brandon4232.mylabserver.com/rectangle/all/rectangle.jar'
+        sh 'wget http://brandon4232.mylabserver.com/rectangles/all/rectangle.jar'
         sh 'java -jar rectangle.jar 2 3'
       }
     }
@@ -51,7 +51,7 @@ pipeline {
         label 'Slave 1'
       }
       steps {
-        sh 'cp /var/www/html/all/rectangle.jar /var/www/html/stable/'
+        sh 'cp /var/www/html/rectangles/all/rectangle.jar /var/www/html/rectangles/stable/'
       }
     }
   }
