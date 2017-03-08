@@ -1,11 +1,6 @@
 pipeline {
   agent none
-
-  environment {
-    GIT_COMMIT = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
-    SHORT_COMMIT = gitCommit.take(6)
-  }
-
+  
   stages {
     stage('Unit Testing') {
       agent {
