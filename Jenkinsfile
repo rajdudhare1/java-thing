@@ -54,12 +54,5 @@ pipeline {
         sh "cp /var/www/html/rectangles/all/rectangle_${env.BUILD_NUMBER}.jar /var/www/html/rectangles/green/"
       }
     }
-    stage('Promote to Master'){
-      agent {
-        label 'Slave 1'
-      }
-      sh "git stash"
-      sh "git checkout master"
-    }
   }
 }
