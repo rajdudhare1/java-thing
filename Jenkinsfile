@@ -1,16 +1,14 @@
 pipeline {
   agent none
 
-  environment {
-    GIT_COMMIT = "${env.GIT_COMMIT}"
-  }
-
   stages {
     stage('Unit Testing') {
       agent {
         label 'Slave 1'
       }
       steps {
+        sh 'git rev-parse HEAD > GIT_COMMIT'
+        shortCommit = readFile('GIT_COMMIT').take(6)
         sh 'printenv'
         sh 'ant -f test.xml -v'
         junit 'reports/result.xml'
@@ -29,7 +27,7 @@ pipeline {
         label 'Slave 1'
       }
       steps {
-        sh "cp dist/rectangle_${env.BUILD_NUMBER}_${env.GIT_COMMIT}.jar /var/www/html/rectangles/all/"
+        sh "cp dist/rectangle_${env.BUILD_NUMBER}_${shortCommit}.jar /var/www/html/rectangles/all/"
       }
     }
     stage('Test on CentOS'){
@@ -37,8 +35,8 @@ pipeline {
         label 'CentOS'
       }
       steps {
-        sh "wget http://brandon4232.mylabserver.com/rectangles/all/rectangle_${env.BUILD_NUMBER}_${env.GIT_COMMIT}.jar"
-        sh "java -jar rectangle_${env.BUILD_NUMBER}_${env.GIT_COMMIT}.jar 2 3"
+        sh "wget http://brandon4232.mylabserver.com/rectangles/all/rectangle_${env.BUILD_NUMBER}_${shortCommit}.jar"
+        sh "java -jar rectangle_${env.BUILD_NUMBER}_${shortCommit}.jar 2 3"
       }
     }
     stage('Test on Debian') {
@@ -46,8 +44,8 @@ pipeline {
         docker 'openjdk:8u121-jre'
       }
       steps {
-        sh "wget http://brandon4232.mylabserver.com/rectangles/all/rectangle_${env.BUILD_NUMBER}_${env.GIT_COMMIT}.jar"
-        sh "java -jar rectangle_${env.BUILD_NUMBER}_${env.GIT_COMMIT}.jar 2 3"
+        sh "wget http://brandon4232.mylabserver.com/rectangles/all/rectangle_${env.BUILD_NUMBER}_${shortCommit}.jar"
+        sh "java -jar rectangle_${env.BUILD_NUMBER}_${shortCommit}.jar 2 3"
       }
     }
     stage('Promote to Stable'){
@@ -55,7 +53,7 @@ pipeline {
         label 'Slave 1'
       }
       steps {
-        sh "cp /var/www/html/rectangles/all/rectangle_${env.BUILD_NUMBER}_${env.GIT_COMMIT}.jar /var/www/html/rectangles/stable/"
+        sh "cp /var/www/html/rectangles/all/rectangle_${env.BUILD_NUMBER}_${shortCommit}.jar /var/www/html/rectangles/stable/"
       }
     }
   }

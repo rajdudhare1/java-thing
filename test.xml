@@ -1,4 +1,6 @@
 <project name="rectangle">
+  <property environment="env"/>
+
   <property name="src.dir" location="src" />
   <property name="build.dir" location="bin" />
   <property name="report.dir" location="reports" />
@@ -29,7 +31,7 @@
 
   <junit printsummary="yes" fork="true">
     <classpath refid="junit.class.path" />
-    <test name="RectangleTest" todir="${report.dir}" outfile="result">
+    <test name="RectangleTest" todir="${report.dir}" outfile="${env.BUILD_NUMBER}_result">
       <formatter type="xml" />
     </test>
   </junit>
