@@ -8,11 +8,11 @@ pipeline {
       }
       steps {
         sh 'git rev-parse HEAD > GIT_COMMIT'
-        def shortCommit = readFile('GIT_COMMIT').take(6)
         sh 'printenv'
         sh 'ant -f test.xml -v'
         junit 'reports/result.xml'
       }
+      def shortCommit = readFile('GIT_COMMIT').take(6)
     }
     stage('Build') {
       agent {
