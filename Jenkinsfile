@@ -23,7 +23,7 @@ pipeline {
         label 'Slave 1'
       }
       steps {
-        sh 'cp dist/rectangle.jar /var/www/html/all/'
+        sh 'cp dist/rectangle.jar /var/www/html/rectangle/all/'
       }
     }
     stage('Test on CentOS'){
