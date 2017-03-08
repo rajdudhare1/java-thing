@@ -29,7 +29,7 @@ pipeline {
         label 'Slave 1'
       }
       steps {
-        sh "cp dist/rectangle_${env.BUILD_NUMBER}_${shortCommit}.jar /var/www/html/rectangles/all/"
+        sh "cp dist/rectangle_${env.BUILD_NUMBER}.jar /var/www/html/rectangles/all/"
       }
     }
     stage('Test on CentOS'){
@@ -37,8 +37,8 @@ pipeline {
         label 'CentOS'
       }
       steps {
-        sh "wget http://brandon4232.mylabserver.com/rectangles/all/rectangle_${env.BUILD_NUMBER}_${shortCommit}.jar"
-        sh "java -jar rectangle_${env.BUILD_NUMBER}_${shortCommit}.jar 2 3"
+        sh "wget http://brandon4232.mylabserver.com/rectangles/all/rectangle_${env.BUILD_NUMBER}.jar"
+        sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 2 3"
       }
     }
     stage('Test on Debian') {
@@ -46,8 +46,8 @@ pipeline {
         docker 'openjdk:8u121-jre'
       }
       steps {
-        sh "wget http://brandon4232.mylabserver.com/rectangles/all/rectangle_${env.BUILD_NUMBER}_${shortCommit}.jar"
-        sh "java -jar rectangle_${env.BUILD_NUMBER}_${shortCommit}.jar 2 3"
+        sh "wget http://brandon4232.mylabserver.com/rectangles/all/rectangle_${env.BUILD_NUMBER}.jar"
+        sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 2 3"
       }
     }
     stage('Promote to Stable'){
@@ -55,7 +55,7 @@ pipeline {
         label 'Slave 1'
       }
       steps {
-        sh "cp /var/www/html/rectangles/all/rectangle_${env.BUILD_NUMBER}_${shortCommit}.jar /var/www/html/rectangles/stable/"
+        sh "cp /var/www/html/rectangles/all/rectangle_${env.BUILD_NUMBER}.jar /var/www/html/rectangles/stable/"
       }
     }
   }
