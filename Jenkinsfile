@@ -1,6 +1,6 @@
 pipeline {
   agent none
-  
+
   stages {
     stage('Unit Testing') {
       agent {
@@ -8,7 +8,7 @@ pipeline {
       }
       steps {
         sh 'ant -f test.xml -v'
-        junit 'reports/result.xml'
+        junit "reports/${env.BUILD_NUMBER}_result.xml"
       }
     }
     stage('Build') {
