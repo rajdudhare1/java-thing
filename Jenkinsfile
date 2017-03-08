@@ -1,14 +1,17 @@
 pipeline {
   agent none
 
+  node {
+    gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
+    shortCommit = gitCommit.take(6)
+  }
+
   stages {
     stage('Unit Testing') {
       agent {
         label 'Slave 1'
       }
       steps {
-        gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
-        shortCommit = gitCommit.take(6)
         sh 'ant -f test.xml -v'
         junit 'reports/result.xml'
       }
