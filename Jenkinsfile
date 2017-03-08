@@ -1,9 +1,9 @@
 pipeline {
   agent none
 
-  node {
-    gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
-    shortCommit = gitCommit.take(6)
+  environment {
+    GIT_COMMIT = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
+    SHORT_COMMIT = gitCommit.take(6)
   }
 
   stages {
