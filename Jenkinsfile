@@ -18,6 +18,7 @@ pipeline {
       }
       steps {
         sh 'ant -f build.xml -v'
+		println "running ant build"
       }
     }
     stage('Deploy to Apache'){
